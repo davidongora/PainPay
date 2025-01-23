@@ -1,0 +1,9 @@
+<resources>
+    <string name="google_app_id" translatable="false">1:5941883000:android:0cb80cc12c6b23c90dfd8d</string>
+    <string name="firebase_database_url" translatable="false">https://painpay-b2e9e.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">5941883000</string>
+    <string name="google_api_key" translatable="false">AIzaSyCgJqCcpCJ5O1aH0shY0Ry4fv3I8NLnKSQ</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCgJqCcpCJ5O1aH0shY0Ry4fv3I8NLnKSQ</string>
+    <string name="project_id" translatable="false">painpay-b2e9e</string>
+    <string name="storage_bucket" translatable="false">painpay-b2e9e.firebasestorage.app</string>
+</resources>
