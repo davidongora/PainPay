@@ -60,6 +60,17 @@ dependencies:
   cloud_firestore: ^4.17.5
   flutter_local_notifications: ^18.0.1
   sms_autofill: ^2.4.1
+  showcaseview: ^3.0.0
+  easy_localization: ^3.0.7
+  shimmer: ^3.0.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  google_mlkit_face_detection: ^0.12.0
+  firebase_remote_config: ^4.4.7
+  shared_preferences: ^2.3.5
+
+
   # awesome_notifications: ^0.10.0
   # shared_preferences: ^2.3.4
 
@@ -90,6 +101,7 @@ flutter_icons:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true 
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -121,7 +133,9 @@ flutter:
     - assets/welcomePage.png
     - assets/privacy_policy.md 
     - .env
-
+    - assets/lang/
+    - assets/lang/fr.json
+    - assets/lang/en.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
