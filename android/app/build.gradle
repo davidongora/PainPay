@@ -1,0 +1,98 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.firebase.crashlytics" version "2.9.8" apply false
+    id "com.google.gms.google-services" version "4.4.2" apply false
+}
+
+android {
+    namespace = "com.example.pain_pay"
+    compileSdk = 34
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.pain_pay"
+        // You can update the following values to match your application needs.
+        multiDexEnabled true
+
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // minSdk = flutter.minSdkVersion
+        minSdk = 28
+
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode.toInteger()
+        versionName = flutter.versionName
+    }
+
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    // signingConfigs {
+    //     release {
+    //         storeFile file("path/to/your/keystore.jks")
+    //         storePassword "your-store-password"
+    //         keyAlias "your-key-alias"
+    //         keyPassword "your-key-password"
+    //     }
+    // }
+
+// splits {
+//         abi {
+//             enable true
+//             reset()
+//             include "armeabi-v7a", "arm64-v8a", "x86_64"
+//             universalApk false
+//         }
+//     }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // signingConfig signingConfigs.release
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            // signingConfig = signingConfigs.debug
+            minifyEnabled true
+                    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources true
+            // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.1.1')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    implementation 'androidx.window:window:1.0.0'
+    implementation 'androidx.window:window-java:1.0.0'
+
+}
