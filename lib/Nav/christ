@@ -1,0 +1,84 @@
+class FallingTreesScreen extends StatefulWidget {
+  @override
+  _FallingTreesScreenState createState() => _FallingTreesScreenState();
+}
+
+class _FallingTreesScreenState extends State<FallingTreesScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..repeat(); // Infinite loop
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue[900],
+      body: Stack(
+        children: List.generate(
+          10, // Number of trees
+          (index) => FallingTree(
+            controller: _controller,
+            initialX: Random().nextDouble() * MediaQuery.of(context).size.width,
+            size: 40 + Random().nextDouble() * 20, // Random tree size
+            fallSpeed: 5 + Random().nextDouble() * 5, // Random fall speed
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FallingTree extends StatelessWidget {
+  final AnimationController controller;
+  final double initialX;
+  final double size;
+  final double fallSpeed;
+
+  const FallingTree({
+    Key? key,
+    required this.controller,
+    required this.initialX,
+    required this.size,
+    required this.fallSpeed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        // Calculate tree position
+        double positionY = (controller.value * screenHeight * fallSpeed) %
+            screenHeight;
+
+        return Positioned(
+          top: positionY,
+          left: initialX,
+          child: Transform.rotate(
+            angle: controller.value * 2 * pi, // Spinning effect
+            child: Icon(
+              Icons.forest, // Replace with your tree asset
+              color: Colors.green,
+              size: size,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
