@@ -8,6 +8,8 @@ class InputField extends StatelessWidget {
   final Icon? prefixIcon;
   final TextEditingController? controller;
   final bool obscureText;
+  final TextInputType keyboardType;
+
 
   const InputField({
     Key? key,
@@ -16,7 +18,8 @@ class InputField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.controller,
-    this.obscureText = false,
+    this.obscureText = false, 
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   @override
