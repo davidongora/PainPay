@@ -120,8 +120,7 @@ class _MyProfileState extends State<MyProfile> {
                     leading: Icon(Icons.help),
                     title: Text('Tour App', style: textTheme.bodyLarge),
                     onTap: () {
-                      setState(() {
-                      });
+                      setState(() {});
                       final showcaseManager =
                           Provider.of<ShowcaseManager>(context, listen: false);
                       showcaseManager.resetShowcase();
